@@ -23,6 +23,8 @@ public class Java2dGraphics extends JPanel implements Runnable {
     private final int FLAG_BAR_HEIGHT = 100;
     private final int FLAG_BAR_WIDTH = 700;
 
+    private int currentStarAngle = 0;
+
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
@@ -30,7 +32,7 @@ public class Java2dGraphics extends JPanel implements Runnable {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         JFrame window = new JFrame();
-        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 20);
+        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 10);
         window.setResizable(false);
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,8 +55,9 @@ public class Java2dGraphics extends JPanel implements Runnable {
     public void run() {
         while (true) {
             try {
-                updateState();
-                Thread.sleep(10);
+                currentStarAngle += 20;
+                repaint();
+                Thread.sleep(150);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Java2dGraphics.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -69,31 +72,19 @@ public class Java2dGraphics extends JPanel implements Runnable {
         g2D.setColor(Color.BLUE);
         g2D.fillRect(0, 0, FLAG_BAR_WIDTH, FLAG_BAR_HEIGHT);
 
-        // g2D.setColor(Color.WHITE);
-        // g2D.fillRect(0, 100, 600, 200);
         g2D.setColor(Color.BLUE);
+        g2D.fillRect(0, WINDOW_HEIGHT - FLAG_BAR_HEIGHT, FLAG_BAR_WIDTH, FLAG_BAR_HEIGHT);
+
+        g2D.rotate(Math.toRadians(currentStarAngle), WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+
+        g2D.setStroke(new BasicStroke(7));
+
         int[] starXPoints = {WINDOW_WIDTH / 2 - 50, WINDOW_WIDTH / 2, WINDOW_WIDTH / 2 + 50};
-        
+
         int[] starYPoints = {WINDOW_HEIGHT / 2 - 35, WINDOW_HEIGHT / 2 + 65, WINDOW_HEIGHT / 2 - 35};
-        g2D.setStroke(new BasicStroke(7));
         g2D.drawPolygon(starXPoints, starYPoints, 3);
-        
+
         int[] star2YPoints = {WINDOW_HEIGHT / 2 + 35, WINDOW_HEIGHT / 2 - 65, WINDOW_HEIGHT / 2 + 35};
-        g2D.setStroke(new BasicStroke(7));
         g2D.drawPolygon(starXPoints, star2YPoints, 3);
-        
-        
-        g2D.rotate(Math.toRadians(360), WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-        
-
-        g2D.setColor(Color.BLUE);
-        g2D.fillRect(0, WINDOW_HEIGHT - FLAG_BAR_HEIGHT , FLAG_BAR_WIDTH, FLAG_BAR_HEIGHT);
-
     }
-
-    private void updateState() {
-        
-        
-    }
-
 }
