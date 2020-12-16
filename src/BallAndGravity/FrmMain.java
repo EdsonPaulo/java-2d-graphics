@@ -5,6 +5,7 @@ package BallAndGravity;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * @author EdsonPaulo
@@ -19,10 +20,14 @@ public class FrmMain extends JFrame {
 
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 10);
         setResizable(false);
+        setLayout(null);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.WHITE);
 
+        Ball ball = new Ball();
+        ball.setBounds(0, 0, 700, 500);
+        getContentPane().add(ball);
         setVisible(true);
     }
 

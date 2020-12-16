@@ -1,7 +1,7 @@
 /*
  * 
  */
-package IsraelFlag;
+package AnimatedBus;
 
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -11,11 +11,11 @@ import javax.swing.JFrame;
  */
 public class FrmMain extends JFrame {
 
-    private static final int WINDOW_WIDTH = 700;
-    private static final int WINDOW_HEIGHT = 500;
+    private static final int WINDOW_WIDTH = 1024;
+    private static final int WINDOW_HEIGHT = 830;
 
     public FrmMain() throws Exception {
-        super("Israel Flag");
+        super("Bus");
 
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT + 10);
         setResizable(false);
@@ -23,7 +23,7 @@ public class FrmMain extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.WHITE);
 
-        Flag mainPane = new Flag();
+        Bus mainPane = new Bus();
 
         getContentPane().add(mainPane);
         setVisible(true);
