@@ -19,15 +19,15 @@ public class Bus extends JPanel implements Runnable {
     private static final int WINDOW_WIDTH = 700;
     private static final int WINDOW_HEIGHT = 500;
 
-    private int blockWidth = 400;
-    private int blockHeight = 200;
+    private final int blockWidth = 400;
+    private final int blockHeight = 200;
 
     private int blockPositionX = 100;
-    private int blockPositionY = 400;
+    private final int blockPositionY = 400;
     private int blockDirection = 10;
 
     private int personPositionX = blockPositionX + 25;
-    private int personPositionY = blockPositionY + 15;
+    private final int personPositionY = blockPositionY + 15;
     private int personDirection = 10;
 
     public Bus() throws Exception {
